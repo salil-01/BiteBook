@@ -1,4 +1,4 @@
-gradient = style="
+style="
                         background: linear-gradient(
                           to right,
                           #ee7724,

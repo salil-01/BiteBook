@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 // tslint:disable-next-line: no-unused-variable
 
@@ -12,8 +13,21 @@ export class LoginComponent {
     email: '',
     password: '',
   };
-  login() {
+
+  constructor(private authService: AuthService) {}
+
+  login(): void {
     const formData = { ...this.loginForm };
-    console.log(formData);
+
+    this.authService.loginUser(formData).subscribe({
+      next: (res) => {
+        console.log(res);
+        this.authService.auth = true;
+      },
+      error: (error) => {
+        console.log(error);
+        this.authService.auth = false;
+      },
+    });
   }
 }
