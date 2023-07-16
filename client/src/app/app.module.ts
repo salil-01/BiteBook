@@ -11,6 +11,9 @@ import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './components/register/register.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { MenuComponent } from './pages/menu/menu.component';
+import { AdminComponent } from './pages/admin/admin.component';
+import { InventoryComponent } from './components/inventory/inventory.component';
+import { OrdersComponent } from './components/orders/orders.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +24,9 @@ import { MenuComponent } from './pages/menu/menu.component';
     RegisterComponent,
     NavbarComponent,
     MenuComponent,
+    AdminComponent,
+    InventoryComponent,
+    OrdersComponent,
   ],
   imports: [
     BrowserModule,
