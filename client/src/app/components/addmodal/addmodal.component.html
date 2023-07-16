@@ -1,1 +1,71 @@
-<p>addmodal works!</p>
+<!-- form-modal.component.html -->
+<div
+  class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
+>
+  <div class="bg-white w-96 p-8 rounded-md shadow-lg">
+    <h2 class="text-2xl font-normal mb-4">Add a Dish</h2>
+    <form (ngSubmit)="submitForm()" #form="ngForm" class="space-y-4">
+      <div>
+        <label for="name" class="block text-base">Name</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          class="border border-gray-300 rounded-sm px-3 py-2 w-full mt-1"
+          [(ngModel)]="item.name"
+          required
+        />
+      </div>
+      <div>
+        <label for="price" class="block text-base">Price</label>
+        <input
+          type="number"
+          id="price"
+          name="price"
+          class="border border-gray-300 rounded-sm px-3 py-2 w-full mt-1"
+          [(ngModel)]="item.price"
+          required
+        />
+      </div>
+      <div>
+        <label for="stock" class="block text-base">Stock</label>
+        <input
+          type="number"
+          id="stock"
+          name="stock"
+          class="border border-gray-300 rounded-sm px-3 py-2 w-full mt-1"
+          [(ngModel)]="item.stock"
+          required
+        />
+      </div>
+      <div class="mb-10">
+        <label for="availability" class="block text-base">Availability</label>
+        <select
+          id="availability"
+          name="availability"
+          class="border border-gray-300 rounded-sm px-3 py-2 h-11 w-full mt-1"
+          [(ngModel)]="item.availability"
+          required
+        >
+          <option value="">Select Availability</option>
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
+      </div>
+      <div class="flex justify-end">
+        <button
+          type="submit"
+          class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-md disabled:opacity-50 mr-5"
+        >
+          Submit
+        </button>
+        <button
+          class="bg-red-500 hover:bg-red-600 text-gray-100 px-4 py-2 rounded-md"
+          (click)="closeModal()"
+        >
+          Close
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -9,3 +9,9 @@ export interface dishInventory {
   stock: number;
   availability: string;
 }
+export interface addDishItem {
+  name: string;
+  price: string;
+  stock: string;
+  availability: string;
+}

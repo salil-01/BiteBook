@@ -17,7 +17,8 @@ export class EditmodalComponent {
   }
 
   updateDish(): void {
-    console.log('edited');
+    // console.log('edited');
+    console.log(this.editedDish);
 
     // this.dishService.updateDish(this.editedDish).subscribe(
     //   () => {
