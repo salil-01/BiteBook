@@ -1,0 +1,52 @@
+<div>
+  <h1 class="text-center text-3xl font-normal mt-2 mb-3">Menu</h1>
+  <hr class="border-dotted border-gray-400" />
+  <div
+    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 p-2"
+  >
+    <div
+      *ngFor="let dish of menuItems"
+      class="bg-white rounded-lg shadow-sm shadow-slate-400 p-4"
+    >
+      <h2 class="text-2xl text-center font-normal mb-2">{{ dish.name }}</h2>
+      <p class="mb-2">Price : ${{ dish.price }}</p>
+      <div class="flex justify-start items-center gap-4 mb-4">
+        <label for="quantity" class="mr-2">Quantity:</label>
+        <select
+          id="quantity"
+          class="rounded-lg border-gray-300 border p-2 w-2/4"
+          (change)="onQuantityChange($event, dish.id)"
+        >
+          <option value="">Select Quantity</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <!-- Add more options as needed -->
+        </select>
+      </div>
+      <div
+        class="w-11/12 m-auto mt-10 mb-4 border border-dotted border-black p-2"
+      >
+        <h4 class="text-center mb-4">Recent Review</h4>
+        <div class="text-base flex flex-row w-5/6 m-auto justify-between mb-4">
+          <p class="text-orange-500">Username : {{ dish.reviews[0]?.email }}</p>
+          <p>Rating : {{ dish.reviews[0]?.rating }}⭐</p>
+        </div>
+        <div class="w-5/6 m-auto">
+          <p class="text-gray-600 mb-4">
+            Review Message : {{ dish.reviews[0]?.review_comment }}
+          </p>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <button
+          class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition-colors"
+          (click)="placeOrder(dish.id, selectedQuantities[dish.id])"
+        >
+          Place Order
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

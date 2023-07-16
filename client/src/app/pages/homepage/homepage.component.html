@@ -1,16 +1,34 @@
 <!-- home.component.html -->
 
 <div class="bg-white">
-  <header class="py-4 px-6 text-black text-center">
-    <h1 class="text-4xl font-bold">Welcome to BookBite!</h1>
-    <p class="text-xl mt-2">Discover the world of delicious food.</p>
-  </header>
+  <div class="relative h-50vh">
+    <div>
+      <img
+        src="https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/9b21aa66b4922ae2.png"
+        alt=""
+        class="object-cover w-full h-full"
+      />
+    </div>
+
+    <header
+      class="absolute top-1/4 left-0 right-1/2 py-4 px-6 text-black text-center z-10"
+    >
+      <h1 class="text-3xl font-medium">Welcome to BiteBook!</h1>
+      <p class="text-xl mt-2">Discover the world of delicious food.</p>
+      <p class="text-xl mt-2">
+        A delightful platform where you can indulge in a wide variety of dishes
+        catered to your taste buds. Order your favorite meals, explore new
+        flavors, and conveniently track your order history. Savor the
+        convenience and culinary delights right at your fingertips. Bon appétit!
+      </p>
+    </header>
+  </div>
 
   <main class="container mx-auto flex flex-col gap-3 p-6">
     <div class="bg-gray-200 p-2 rounded-lg shadow-md">
-      <h2 class="text-3xl font-bold mb-4 text-coral text-center">
+      <h1 class="text-3xl font-normal mb-4 text-coral text-center">
         Featured Recipes
-      </h2>
+      </h1>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div
           class="flex flex-col items-center justify-center bg-gray-100 p-4 rounded-lg"
@@ -22,8 +40,8 @@
               class="rounded-lg w-5/6 m-auto"
             />
           </div>
-          <p class="text-lg font-bold text-coral my-2">Spaghetti Bolognese</p>
-          <p class="text-lg text-gray-700 text-center">
+          <p class="text-lg font-medium text-coral my-2">Spaghetti Bolognese</p>
+          <p class="text-base text-gray-700 text-center">
             Classic Italian pasta dish with ground beef, tomato sauce, and
             herbs. Served over cooked spaghetti.
           </p>
@@ -38,8 +56,8 @@
               class="rounded-lg w-5/6 m-auto"
             />
           </div>
-          <p class="text-lg font-bold text-coral my-2">Margherita Pizza</p>
-          <p class="text-lg text-gray-700 text-center">
+          <p class="text-lg font-medium text-coral my-2">Margherita Pizza</p>
+          <p class="text-base text-gray-700 text-center">
             Traditional Italian pizza topped with fresh mozzarella, tomatoes,
             basil, and olive oil and some scented flavour .
           </p>
@@ -54,8 +72,8 @@
               class="rounded-lg w-5/6 m-auto"
             />
           </div>
-          <p class="text-lg font-bold text-coral my-2">Chicken Stir-Fry</p>
-          <p class="text-lg text-gray-700 text-center">
+          <p class="text-lg font-medium text-coral my-2">Chicken Stir-Fry</p>
+          <p class="text-base text-gray-700 text-center">
             Quick and healthy stir-fried chicken with vegetables, soy sauce, and
             garlic. Served with steamed rice.
           </p>
@@ -70,8 +88,8 @@
               class="rounded-lg w-5/6 m-auto"
             />
           </div>
-          <p class="text-lg font-bold text-coral my-2">Chicken Stir-Fry</p>
-          <p class="text-lg text-gray-700 text-center">
+          <p class="text-lg font-medium text-coral my-2">Chicken Stir-Fry</p>
+          <p class="text-base text-gray-700 text-center">
             Quick and healthy stir-fried chicken with vegetables, soy sauce, and
             garlic. Served with steamed rice.
           </p>
@@ -85,9 +103,9 @@
       </p>
     </div>
     <div class="bg-gray-200 p-6 rounded-lg shadow-md">
-      <h2 class="text-3xl font-bold mb-4 text-coral text-center">
+      <h1 class="text-3xl font-medium mb-4 text-coral text-center">
         Meal of the Day
-      </h2>
+      </h1>
       <div
         class="flex flex-col md:flex-row items-center justify-between bg-gray-100 p-4 rounded-lg"
       >
@@ -99,10 +117,10 @@
           />
         </div>
         <div class="md:w-2/3 ml-0 md:ml-6">
-          <h3 class="text-lg font-bold text-coral my-2">
+          <h3 class="text-lg font-medium text-coral my-2">
             Grilled Salmon with Lemon Butter Sauce
           </h3>
-          <p class="text-lg text-gray-700">
+          <p class="text-base text-gray-700">
             Grilled salmon fillet seasoned with herbs and served with a tangy
             lemon butter sauce. Served with roasted vegetables and mashed
             potatoes, Mashed potatoes are creamy and velvety, prepared by

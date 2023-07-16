@@ -1,0 +1,66 @@
+<nav
+  class="shadow-lg max-h-14"
+  style="
+    background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+  "
+>
+  <div class="container mx-auto flex items-center justify-between">
+    <!-- Logo -->
+    <div class="flex items-center">
+      <img
+        src="https://res.cloudinary.com/dn6unnbju/image/upload/v1689445758/whitetxt-removebg-preview_d9dici.png"
+        alt="Logo"
+        class="h-14 border border-black"
+      />
+    </div>
+
+    <!-- Links -->
+    <div class="flex items-center px-4 py-2">
+      <a routerLink="/" class="text-white hover:text-gray-200 text-lg mx-2"
+        >Home</a
+      >
+      <a routerLink="/menu" class="text-white hover:text-gray-200 text-lg mx-2"
+        >Menu</a
+      >
+
+      <!-- Admin Link (conditional display) -->
+      <a
+        *ngIf="isAdmin"
+        routerLink="/admin"
+        class="text-white hover:text-gray-200 mx-2 text-lg"
+        >Admin</a
+      >
+
+      <!-- Profile Menu -->
+      <div class="relative" *ngIf="isLoggedIn">
+        <button
+          class="text-white hover:text-gray-200 mx-2 focus:outline-none"
+          (click)="toggleProfileMenu()"
+        >
+          <img src="path/to/profile-icon.png" alt="Profile" class="h-6" />
+        </button>
+        <ul
+          class="absolute right-0 mt-2 bg-white rounded-lg shadow-lg py-2 w-40"
+          [class.hidden]="!showProfileMenu"
+        >
+          <li><a routerLink="/orders">Orders</a></li>
+          <li><button (click)="logout()">Logout</button></li>
+        </ul>
+      </div>
+
+      <!-- Login/Register Links -->
+      <a
+        *ngIf="!isLoggedIn"
+        routerLink="/login"
+        class="text-white hover:text-gray-200 mx-2 text-lg"
+        >Login</a
+      >
+      <a
+        *ngIf="!isLoggedIn"
+        routerLink="/register"
+        class="text-white hover:text-gray-200 mx-2 text-lg"
+        >Register</a
+      >
+    </div>
+  </div>
+</nav>

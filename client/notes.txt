@@ -7,3 +7,21 @@ style="
                           #b44593
                         );
                       "
+                      {
+  id:1,
+  name:"pizza",
+  price:100,
+  stock:10,
+  reviews:[
+    {
+      email:"sldkal",
+      rating:3,
+      review_comment:"sdfsff"
+    },
+    {
+      email:"sadaldfsfsfkal",
+      rating:3,
+      review_comment:"sddsdsfsff"
+    }
+  ]
+}

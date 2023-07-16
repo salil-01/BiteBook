@@ -8,9 +8,14 @@ import { Observable } from 'rxjs';
 export class AuthService {
   url: string = 'https://reqres.in/api/login';
   auth: boolean = false;
+  isLoggedIn: boolean = false;
+  userRole: string = '';
   constructor(private http: HttpClient) {}
 
   loginUser(userData: User): Observable<any> {
     return this.http.get<any>(`${this.url}`);
+  }
+  logOut() {
+    this.isLoggedIn = false;
   }
 }

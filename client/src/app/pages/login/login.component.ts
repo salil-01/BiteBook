@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 // tslint:disable-next-line: no-unused-variable
@@ -9,13 +10,12 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
+  constructor(private authService: AuthService, private router: Router) {}
+
   loginForm = {
     email: '',
     password: '',
   };
-
-  constructor(private authService: AuthService) {}
-
   login(): void {
     const formData = { ...this.loginForm };
 
