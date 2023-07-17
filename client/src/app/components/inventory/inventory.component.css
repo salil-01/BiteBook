@@ -2,3 +2,16 @@
   color: gray;
   background: red;
 }
+table.table {
+  border-collapse: collapse;
+  background-color: #f5f7fa;
+}
+
+table.table th,
+table.table td {
+  border: 1px solid #e2e8f0;
+}
+
+button {
+  cursor: pointer;
+}

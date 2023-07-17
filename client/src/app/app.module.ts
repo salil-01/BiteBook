@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
+import { NgxSpinnerModule } from 'ngx-spinner';
 import { AppRoutingModule } from './routing/app-routing.module';
 import { AppComponent } from './app.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
@@ -44,6 +45,7 @@ import { AddmodalComponent } from './components/addmodal/addmodal.component';
     BrowserAnimationsModule,
     MatButtonModule,
     MatDialogModule,
+    NgxSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

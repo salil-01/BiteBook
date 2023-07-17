@@ -1,25 +1,43 @@
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-  <div
-    *ngFor="let dish of inventoryItems"
-    class="bg-white shadow-lg p-6 border border-dotted border-gray-300"
-  >
-    <h2 class="text-xl text-center mb-2">{{ dish.name }}</h2>
-    <p class="text-gray-800 mt-3">Price : ${{ dish.price }}</p>
-    <p class="text-gray-800 mt-3">Stock : {{ dish.stock }}</p>
-    <p class="text-gray-800 mt-3">Availability : {{ dish.availability }}</p>
-    <div class="mt-4 flex justify-around">
-      <button
-        class="text-gray-800 border border-gray-500 hover:bg-gray-500 hover:text-white px-3 py-2 w-24 rounded-md mr-2"
-        (click)="editDish(dish)"
-      >
-        Edit
-      </button>
-      <button
-        class="border border-red-500 text-red-800 hover:bg-red-500 hover:text-white px-3 py-2 w-24 rounded-md"
-        (click)="deleteDish(dish.id)"
-      >
-        Delete
-      </button>
-    </div>
-  </div>
+<div class="w-full overflow-x-auto">
+  <h1 *ngIf="isLoading">Loading</h1>
+  <ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+
+  <table class="table min-w-full" *ngIf="!isLoading">
+    <thead>
+      <tr class="text-left">
+        <th class="px-4 py-2 font-medium">ID</th>
+        <th class="px-4 py-2 font-medium">Name</th>
+        <th class="px-4 py-2 font-medium">Price($)</th>
+        <th class="px-4 py-2 font-medium">Stock</th>
+        <th class="px-4 py-2 font-medium">Availability</th>
+        <th class="px-4 py-2 font-medium text-center">Edit</th>
+        <th class="px-4 py-2 font-medium text-center">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of inventoryItems">
+        <td class="px-4 py-2">{{ item.id }}</td>
+        <td class="px-4 py-2">{{ item.name }}</td>
+        <td class="px-4 py-2">{{ item.price }}</td>
+        <td class="px-4 py-2">{{ item.stock }}</td>
+        <td class="px-4 py-2">{{ item.availability }}</td>
+        <td class="px-4 py-2 text-center">
+          <button
+            class="text-gray-800 border border-gray-500 px-3 py-1 rounded lg:w-4/5 hover:text-white hover:bg-gray-500"
+            (click)="editDish(item)"
+          >
+            Edit
+          </button>
+        </td>
+        <td class="px-4 py-2 text-center">
+          <button
+            class="text-red-800 border border-red-500 px-3 py-1 rounded lg:w-4/5 hover:text-white hover:bg-red-500"
+            (click)="deleteDish(item.id)"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>

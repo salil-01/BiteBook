@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
+
 import { dishInventory } from 'src/app/constants/models';
 import { MatDialog } from '@angular/material/dialog';
 import { EditmodalComponent } from '../editmodal/editmodal.component';
@@ -8,7 +10,9 @@ import { EditmodalComponent } from '../editmodal/editmodal.component';
   templateUrl: './inventory.component.html',
   styleUrls: ['./inventory.component.css'],
 })
-export class InventoryComponent {
+export class InventoryComponent implements OnInit {
+  isLoading: boolean = false;
+
   inventoryItems = <any>[
     {
       id: 1,
@@ -46,7 +50,21 @@ export class InventoryComponent {
       availability: 'Yes',
     },
   ];
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog, private spinner: NgxSpinnerService) {}
+  showSpinner(): void {
+    this.spinner.show();
+  }
+
+  hideSpinner(): void {
+    this.spinner.hide();
+  }
+  fetchData(): void {
+    this.isLoading = true;
+    this.showSpinner();
+  }
+  ngOnInit(): void {
+    this.fetchData();
+  }
   // constructor(private dishService: DishService) { }
 
   // ngOnInit() {
@@ -71,6 +89,8 @@ export class InventoryComponent {
   }
 
   deleteDish(dishId: string) {
+    console.log(dishId);
+
     // this.dishService.deleteDish(dishId).subscribe(
     //   (response: any) => {
     //     console.log('Dish deleted successfully');
