@@ -1,116 +1,50 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { MenuService } from 'src/app/services/menu.service';
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css'],
 })
-export class MenuComponent {
+export class MenuComponent implements OnInit {
   selectedQuantities: { [dishId: string]: number | null } = {};
-  menuItems = <any>[
-    {
-      id: 1,
-      name: 'Pizza',
-      price: 100,
-      stock: 10,
-      reviews: [
-        {
-          email: 'sldkal',
-          rating: 3,
-          review_comment: 'sdfsff',
-        },
-        {
-          email: 'sadaldfsfsfkal',
-          rating: 3,
-          review_comment: 'sddsdsfsff',
-        },
-      ],
-    },
-    {
-      id: 2,
-      name: 'Burger',
-      price: 100,
-      stock: 10,
-      reviews: [
-        {
-          email: 'kd@mail',
-          rating: 3,
-          review_comment: 'sdfsff',
-        },
-        {
-          email: 'ck@mail',
-          rating: 3,
-          review_comment: 'sddsdsfsff',
-        },
-      ],
-    },
-    {
-      id: 3,
-      name: 'Pepsi',
-      price: 100,
-      stock: 10,
-      reviews: [
-        {
-          email: 'kd@mail',
-          rating: 3,
-          review_comment: 'sdfsff',
-        },
-        {
-          email: 'ck@mail',
-          rating: 3,
-          review_comment: 'sddsdsfsff',
-        },
-      ],
-    },
-    {
-      id: 4,
-      name: 'Kola',
-      price: 100,
-      stock: 10,
-      reviews: [
-        {
-          email: 'kd@mail',
-          rating: 3,
-          review_comment: 'sdfsff',
-        },
-        {
-          email: 'ck@mail',
-          rating: 3,
-          review_comment: 'sddsdsfsff',
-        },
-      ],
-    },
-    {
-      id: 5,
-      name: 'Fries',
-      price: 100,
-      stock: 10,
-      reviews: [
-        {
-          email: 'kd@mail',
-          rating: 3,
-          review_comment: 'sdfsff',
-        },
-        {
-          email: 'ck@mail',
-          rating: 3,
-          review_comment: 'sddsdsfsff',
-        },
-      ],
-    },
-  ];
+  menuItems = <any>[];
 
+  constructor(private menuService: MenuService) {}
+  // function to fetch Menu
+  fetchMenu() {
+    this.menuService.fetchData().subscribe({
+      next: (res) => {
+        this.menuItems = res;
+        console.log(res);
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
+  }
+  // fetching menu on component mount
+  ngOnInit(): void {
+    this.fetchMenu();
+  }
+  // handling qunatity Change
   onQuantityChange(event: any, dishId: string) {
     const quantity = event?.target?.value || null;
     this.selectedQuantities[dishId] =
       quantity !== null ? parseInt(quantity, 10) : null;
   }
 
-  placeOrder(dishId: string, quantity: any) {
+  // order placing
+  placeOrder(dishId: number, quantity: number | null) {
     if (quantity !== null && quantity !== undefined) {
-      console.log(
-        `Placing order for dish with ID ${dishId} with quantity ${quantity}`
-      );
+      this.menuService.postOrder(dishId, quantity).subscribe({
+        next: (res) => {
+          console.log(res);
+        },
+        error: (error) => {
+          console.log(error);
+        },
+      });
     } else {
       alert('Please select a quantity for the dish.');
     }

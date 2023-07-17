@@ -24,15 +24,12 @@
       >
 
       <!-- Admin Link (conditional display) -->
-      <a
-        *ngIf="isAdmin"
-        routerLink="/admin"
-        class="text-white hover:text-gray-200 mx-2 text-lg"
+      <a routerLink="/admin" class="text-white hover:text-gray-200 mx-2 text-lg"
         >Admin</a
       >
 
       <!-- Profile Menu -->
-      <div class="relative" *ngIf="isLoggedIn">
+      <div class="relative" *ngIf="authService.auth">
         <button
           class="text-white hover:text-gray-200 mx-2 focus:outline-none"
           (click)="toggleProfileMenu()"
@@ -49,14 +46,11 @@
       </div>
 
       <!-- Login/Register Links -->
-      <a
-        *ngIf="!isLoggedIn"
-        routerLink="/login"
-        class="text-white hover:text-gray-200 mx-2 text-lg"
+      <a routerLink="/login" class="text-white hover:text-gray-200 mx-2 text-lg"
         >Login</a
       >
       <a
-        *ngIf="!isLoggedIn"
+        *ngIf="authService.auth"
         routerLink="/register"
         class="text-white hover:text-gray-200 mx-2 text-lg"
         >Register</a

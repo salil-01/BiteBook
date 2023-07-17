@@ -7,17 +7,15 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent {
-  isLoggedIn: boolean = false;
-  isAdmin: boolean = false;
   showProfileMenu: boolean = false;
 
-  constructor(private authService: AuthService) {}
+  constructor(public authService: AuthService) {}
 
-  ngOnInit() {
-    // Check if user is logged in and get user role from AuthService
-    this.isLoggedIn = this.authService.isLoggedIn;
-    this.isAdmin = this.authService.userRole === 'Admin';
-  }
+  // ngOnInit() {
+  //   // Check if user is logged in and get user role from AuthService
+  //   this.isLoggedIn = this.authService.auth;
+  //   this.isAdmin = this.authService.role === 'Admin';
+  // }
   toggleProfileMenu() {
     this.showProfileMenu = !this.showProfileMenu;
   }

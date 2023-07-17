@@ -2,6 +2,14 @@ export interface User {
   email: string;
   password: string;
 }
+export interface menu {
+  id: number;
+  name: string;
+  price: number;
+  stock: number;
+  availability: string;
+  reviews: [];
+}
 export interface dishInventory {
   id: number;
   name: string;

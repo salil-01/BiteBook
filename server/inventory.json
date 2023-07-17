@@ -1,0 +1,44 @@
+[
+    {
+        "id": 3,
+        "name": "Limca",
+        "price": 40,
+        "availability": "Yes",
+        "stock": 5
+    },
+    {
+        "id": 4,
+        "name": "Soda",
+        "price": 60,
+        "availability": "Yes",
+        "stock": 15
+    },
+    {
+        "id": 5,
+        "name": "Berger",
+        "price": 90,
+        "availability": "Yes",
+        "stock": 5
+    },
+    {
+        "id": 6,
+        "name": "Pizza",
+        "price": 260,
+        "availability": "Yes",
+        "stock": 7
+    },
+    {
+        "id": 7,
+        "name": "Fries",
+        "price": 80,
+        "availability": "Yes",
+        "stock": 12
+    },
+    {
+        "id": 8,
+        "name": "New Dish",
+        "price": 0,
+        "availability": "Yes",
+        "stock": 0
+    }
+]
