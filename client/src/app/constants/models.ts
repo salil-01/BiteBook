@@ -15,3 +15,11 @@ export interface addDishItem {
   stock: string;
   availability: string;
 }
+
+export interface adminOrder {
+  id: number;
+  name: string;
+  price: number;
+  status: string;
+  rating: number;
+}

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
@@ -20,6 +20,7 @@ import { OrdersComponent } from './components/orders/orders.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EditmodalComponent } from './components/editmodal/editmodal.component';
 import { AddmodalComponent } from './components/addmodal/addmodal.component';
+import { AdminorderComponent } from './components/adminorder/adminorder.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { AddmodalComponent } from './components/addmodal/addmodal.component';
     OrdersComponent,
     EditmodalComponent,
     AddmodalComponent,
+    AdminorderComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,6 +49,7 @@ import { AddmodalComponent } from './components/addmodal/addmodal.component';
     MatDialogModule,
     NgxSpinnerModule,
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],
   bootstrap: [AppComponent],
 })

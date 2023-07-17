@@ -63,7 +63,7 @@ export class InventoryComponent implements OnInit {
     this.showSpinner();
   }
   ngOnInit(): void {
-    this.fetchData();
+    // this.fetchData();
   }
   // constructor(private dishService: DishService) { }
 

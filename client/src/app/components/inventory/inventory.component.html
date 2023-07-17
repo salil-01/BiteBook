@@ -1,10 +1,16 @@
+<ngx-spinner
+  *ngIf="isLoading"
+  bdColor="rgba(0,0,0,0)"
+  size="medium"
+  color="#000000"
+  type="ball-grid-pulse"
+  [fullScreen]="false"
+  ><p style="color: white">Loading...</p></ngx-spinner
+>
 <div class="w-full overflow-x-auto">
-  <h1 *ngIf="isLoading">Loading</h1>
-  <ngx-spinner type="ball-scale-multiple"></ngx-spinner>
-
   <table class="table min-w-full" *ngIf="!isLoading">
     <thead>
-      <tr class="text-left">
+      <tr class="text-left uppercase bg-gray-200">
         <th class="px-4 py-2 font-medium">ID</th>
         <th class="px-4 py-2 font-medium">Name</th>
         <th class="px-4 py-2 font-medium">Price($)</th>

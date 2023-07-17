@@ -1,0 +1,49 @@
+<table class="min-w-full border-collapse">
+  <thead>
+    <tr>
+      <th class="py-2 px-4 bg-gray-200 font-medium text-left uppercase text-sm">
+        Order ID
+      </th>
+      <th class="py-2 px-4 bg-gray-200 font-medium text-left uppercase text-sm">
+        Customer Name
+      </th>
+      <th class="py-2 px-4 bg-gray-200 font-medium text-left uppercase text-sm">
+        Total Amount
+      </th>
+      <th class="py-2 px-4 bg-gray-200 font-medium text-left uppercase text-sm">
+        Status
+      </th>
+      <th class="py-2 px-4 bg-gray-200 font-medium text-left uppercase text-sm">
+        Rating
+      </th>
+      <th class="py-2 px-4 bg-gray-200 font-medium text-left uppercase text-sm">
+        Action
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let order of orderItems">
+      <td class="py-2 px-4 border-b border-gray-200">{{ order.id }}</td>
+      <td class="py-2 px-4 border-b border-gray-200">
+        {{ order.name }}
+      </td>
+      <td class="py-2 px-4 border-b border-gray-200">
+        {{ order.price }}
+      </td>
+      <td class="py-2 px-4 border-b border-gray-200">{{ order.status }}</td>
+      <td class="py-2 px-4 border-b border-gray-200">{{ order.rating }}</td>
+      <td class="py-2 px-4 border-b border-gray-200">
+        <select
+          class="w-full md:w-4/5 m-auto px-2 py-1 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-gray-500"
+          [(ngModel)]="order.status"
+          (change)="updateOrderStatus(order)"
+        >
+          <option value="Received">Received</option>
+          <option value="In Progress">In Progress</option>
+          <option value="Delivered">Delivered</option>
+          <option value="Cancelled">Cancelled</option>
+        </select>
+      </td>
+    </tr>
+  </tbody>
+</table>
