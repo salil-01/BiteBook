@@ -11,11 +11,6 @@ export class NavbarComponent {
 
   constructor(public authService: AuthService) {}
 
-  // ngOnInit() {
-  //   // Check if user is logged in and get user role from AuthService
-  //   this.isLoggedIn = this.authService.auth;
-  //   this.isAdmin = this.authService.role === 'Admin';
-  // }
   toggleProfileMenu() {
     this.showProfileMenu = !this.showProfileMenu;
   }

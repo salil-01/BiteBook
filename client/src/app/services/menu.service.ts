@@ -1,12 +1,13 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MenuService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private authService: AuthService) {}
   fetchData() {
     return this.http.get<any>(`${environment.apiUrl}/menu-with-reviews`);
   }
@@ -20,7 +21,7 @@ export class MenuService {
     // Set the authorization header
     const headers = new HttpHeaders().set(
       'Authorization',
-      'Bearer YOUR_AUTH_TOKEN'
+      `Bearer ${this.authService?.token}`
     );
     return this.http.post<any>(
       `${environment.apiUrl}/place-order`,

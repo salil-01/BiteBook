@@ -5,6 +5,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import {
+  ToastContainerDirective,
+  ToastrModule,
+  ToastrService,
+  ToastrConfig,
+} from 'ngx-toastr';
 import { AppRoutingModule } from './routing/app-routing.module';
 import { AppComponent } from './app.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
@@ -21,6 +27,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EditmodalComponent } from './components/editmodal/editmodal.component';
 import { AddmodalComponent } from './components/addmodal/addmodal.component';
 import { AdminorderComponent } from './components/adminorder/adminorder.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -48,6 +55,15 @@ import { AdminorderComponent } from './components/adminorder/adminorder.componen
     MatButtonModule,
     MatDialogModule,
     NgxSpinnerModule,
+    CommonModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-top-right',
+      progressBar: true,
+      closeButton: true,
+      tapToDismiss: true,
+      enableHtml: true,
+      // Add more options here as needed
+    }),
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { addDishItem } from 'src/app/constants/models';
 import { MatDialogRef } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
+import { InventoryService } from 'src/app/services/inventory.service';
 
 @Component({
   selector: 'app-addmodal',
@@ -14,17 +16,37 @@ export class AddmodalComponent {
     stock: '',
     availability: '',
   };
-  constructor(public dialogRef: MatDialogRef<AddmodalComponent>) {}
-  submitForm() {
+  constructor(
+    public dialogRef: MatDialogRef<AddmodalComponent>,
+    private toast: ToastrService,
+    private inventoryService: InventoryService
+  ) {}
+  addDish() {
     if (
       this.item.name &&
       this.item.price &&
-      this.item.price &&
+      this.item.stock &&
       this.item.availability
     ) {
-      console.log(this.item);
+      this.inventoryService.addData(this.item).subscribe({
+        next: (res) => {
+          console.log(res);
+          this.inventoryService.triggerEvent();
+          this.toast.success('<p>Dish Added Successfully</p>', '', {
+            enableHtml: true,
+          });
+        },
+        error: (error) => {
+          console.log(error);
+          this.toast.error('<p>Server Error</p>', '', {
+            enableHtml: true,
+          });
+        },
+      });
     } else {
-      console.log('Please fill in all fields.');
+      this.toast.info('<p>Please Fill All the Fields</p>', '', {
+        enableHtml: true,
+      });
     }
   }
   closeModal(): void {

@@ -4,6 +4,7 @@ import { User } from '../constants/models';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { getLocalStorageItem } from 'src/shared/local-storage.util';
+import { ToastrService } from 'ngx-toastr';
 @Injectable({
   providedIn: 'root',
 })
@@ -12,7 +13,7 @@ export class AuthService {
   role = '';
   token = '';
   email = '';
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private toast: ToastrService) {
     this.auth = getLocalStorageItem('auth');
     this.role = getLocalStorageItem('role');
     this.token = getLocalStorageItem('token');
@@ -32,5 +33,8 @@ export class AuthService {
     localStorage.removeItem('email');
     localStorage.removeItem('role');
     localStorage.removeItem('token');
+    this.toast.success('<p>Logout Successfull</p>', '', {
+      enableHtml: true,
+    });
   }
 }

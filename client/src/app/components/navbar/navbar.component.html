@@ -24,8 +24,25 @@
       >
 
       <!-- Admin Link (conditional display) -->
-      <a routerLink="/admin" class="text-white hover:text-gray-200 mx-2 text-lg"
+      <a
+        *ngIf="authService.role === 'Admin'"
+        routerLink="/admin"
+        class="text-white hover:text-gray-200 mx-2 text-lg"
         >Admin</a
+      >
+
+      <!-- Login/Register Links -->
+      <a
+        routerLink="/login"
+        *ngIf="!authService.auth"
+        class="text-white hover:text-gray-200 mx-2 text-lg"
+        >Login</a
+      >
+      <a
+        *ngIf="!authService.auth"
+        routerLink="/register"
+        class="text-white hover:text-gray-200 mx-2 text-lg"
+        >Register</a
       >
 
       <!-- Profile Menu -->
@@ -34,27 +51,20 @@
           class="text-white hover:text-gray-200 mx-2 focus:outline-none"
           (click)="toggleProfileMenu()"
         >
-          <img src="path/to/profile-icon.png" alt="Profile" class="h-6" />
+          <img
+            src="https://img.icons8.com/?size=512&id=7819&format=png"
+            alt="Profile"
+            class="h-8"
+          />
         </button>
         <ul
-          class="absolute right-0 mt-2 bg-white rounded-lg shadow-lg py-2 w-40"
+          class="absolute right-0 mt-2 rounded-md bg-white border border-dotted border-gray-400 shadow-lg p-5 w-40"
           [class.hidden]="!showProfileMenu"
         >
           <li><a routerLink="/orders">Orders</a></li>
           <li><button (click)="logout()">Logout</button></li>
         </ul>
       </div>
-
-      <!-- Login/Register Links -->
-      <a routerLink="/login" class="text-white hover:text-gray-200 mx-2 text-lg"
-        >Login</a
-      >
-      <a
-        *ngIf="authService.auth"
-        routerLink="/register"
-        class="text-white hover:text-gray-200 mx-2 text-lg"
-        >Register</a
-      >
     </div>
   </div>
 </nav>

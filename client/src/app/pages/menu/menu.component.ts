@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+import { AuthService } from 'src/app/services/auth.service';
 import { MenuService } from 'src/app/services/menu.service';
 
 @Component({
@@ -9,9 +11,16 @@ import { MenuService } from 'src/app/services/menu.service';
 export class MenuComponent implements OnInit {
   selectedQuantities: { [dishId: string]: number | null } = {};
   menuItems = <any>[];
-
-  constructor(private menuService: MenuService) {}
+  dis = true;
+  constructor(
+    private menuService: MenuService,
+    private toast: ToastrService,
+    public authService: AuthService
+  ) {
+    // console.log(this.authService.auth);
+  }
   // function to fetch Menu
+
   fetchMenu() {
     this.menuService.fetchData().subscribe({
       next: (res) => {
@@ -37,16 +46,30 @@ export class MenuComponent implements OnInit {
   // order placing
   placeOrder(dishId: number, quantity: number | null) {
     if (quantity !== null && quantity !== undefined) {
-      this.menuService.postOrder(dishId, quantity).subscribe({
-        next: (res) => {
-          console.log(res);
-        },
-        error: (error) => {
-          console.log(error);
-        },
-      });
+      if (this.authService.auth) {
+        this.menuService.postOrder(dishId, quantity).subscribe({
+          next: (res) => {
+            console.log(res);
+            this.toast.success('<p>Order Placed Successfully</p>', '', {
+              enableHtml: true,
+            });
+          },
+          error: (error) => {
+            console.log(error);
+            this.toast.error('<p>Server Error</p>', '', {
+              enableHtml: true,
+            });
+          },
+        });
+      } else {
+        this.toast.error('<p>Login to Place Order</p>', '', {
+          enableHtml: true,
+        });
+      }
     } else {
-      alert('Please select a quantity for the dish.');
+      this.toast.info('<p>Please Select Quantity</p>', '', {
+        enableHtml: true,
+      });
     }
   }
 }

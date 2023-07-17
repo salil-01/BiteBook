@@ -24,7 +24,8 @@
               "src/styles.css",
               "node_modules/ngx-spinner/animations/ball-scale-multiple.css",
               "src/styles.css",
-              "node_modules/ngx-spinner/animations/ball-grid-pulse.css"
+              "node_modules/ngx-spinner/animations/ball-grid-pulse.css",
+              "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": []
           },

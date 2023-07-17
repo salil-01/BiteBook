@@ -20,7 +20,7 @@ host = os.getenv("host")
 
 # Create Flask application
 app = Flask(__name__)
-CORS(app)
+CORS(app, origins='*')
 app.config['SECRET_KEY'] = secretKey
 app.config['OPENAI_API_KEY'] = OPENAI_API_KEY
 app.config['MYSQL_HOST'] = host
@@ -282,7 +282,7 @@ def place_order():
     insert_query = "INSERT INTO orders (email, total_price, status, user_id,item_id,rating) VALUES (%s, %s, %s,%s,%s,%s)"
     insert_values = (user_email, total_price, 'Received',
                      user_id, item_id, rating)
-    print(insert_values)
+    # print(insert_values)
     cursor.execute(insert_query, insert_values)
     connection.commit()
     cursor.close()

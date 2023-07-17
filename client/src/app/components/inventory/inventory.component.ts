@@ -1,105 +1,79 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 
 import { dishInventory } from 'src/app/constants/models';
 import { MatDialog } from '@angular/material/dialog';
 import { EditmodalComponent } from '../editmodal/editmodal.component';
+import { InventoryService } from 'src/app/services/inventory.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-inventory',
   templateUrl: './inventory.component.html',
   styleUrls: ['./inventory.component.css'],
 })
-export class InventoryComponent implements OnInit {
+export class InventoryComponent implements OnInit, AfterViewInit {
   isLoading: boolean = false;
 
-  inventoryItems = <any>[
-    {
-      id: 1,
-      name: 'Pizza',
-      price: 100,
-      stock: 10,
-      availability: 'Yes',
-    },
-    {
-      id: 2,
-      name: 'Burger',
-      price: 100,
-      stock: 10,
-      availability: 'Yes',
-    },
-    {
-      id: 3,
-      name: 'Pepsi',
-      price: 100,
-      stock: 10,
-      availability: 'Yes',
-    },
-    {
-      id: 4,
-      name: 'Kola',
-      price: 100,
-      stock: 10,
-      availability: 'Yes',
-    },
-    {
-      id: 5,
-      name: 'Fries',
-      price: 100,
-      stock: 10,
-      availability: 'Yes',
-    },
-  ];
-  constructor(private dialog: MatDialog, private spinner: NgxSpinnerService) {}
-  showSpinner(): void {
-    this.spinner.show();
-  }
+  inventoryItems = <any>[];
+  constructor(
+    private dialog: MatDialog,
+    private spinner: NgxSpinnerService,
+    private inventoryService: InventoryService,
+    private toast: ToastrService
+  ) {}
 
-  hideSpinner(): void {
-    this.spinner.hide();
+  fetchDishes(): void {
+    this.inventoryService.fetchData().subscribe({
+      next: (res) => {
+        console.log(res);
+        this.inventoryItems = res;
+      },
+      error: (error) => {
+        console.log(error);
+        this.toast.error('<p>Server Error</p>', '', {
+          enableHtml: true,
+        });
+      },
+    });
   }
-  fetchData(): void {
-    this.isLoading = true;
-    this.showSpinner();
-  }
+  // fetching dishes on mount
   ngOnInit(): void {
-    // this.fetchData();
+    this.fetchDishes();
   }
-  // constructor(private dishService: DishService) { }
 
-  // ngOnInit() {
-  //   this.fetchDishes();
-  // }
-
-  // fetchDishes() {
-  //   this.dishService.getDishes().subscribe(
-  //     (response: any) => {
-  //       this.dishes = response.dishes;
-  //     },
-  //     (error: any) => {
-  //       console.error('Error fetching dishes:', error);
-  //     }
-  //   );
-  // }
+  ngAfterViewInit() {
+    // Trigger the event after the component's view has been initialized
+    this.inventoryService.myEvent.subscribe(() => {
+      this.fetchDishes();
+    });
+  }
   editDish(dish: dishInventory): void {
     this.dialog.open(EditmodalComponent, {
       width: '400px',
       data: { dish },
     });
   }
+  // listening to even emitted
 
-  deleteDish(dishId: string) {
+  deleteDish(dishId: number): void {
     console.log(dishId);
 
-    // this.dishService.deleteDish(dishId).subscribe(
-    //   (response: any) => {
-    //     console.log('Dish deleted successfully');
-    //     // Update the dish list by fetching the updated dishes
-    //     this.fetchDishes();
-    //   },
-    //   (error: any) => {
-    //     console.error('Error deleting dish:', error);
-    //   }
-    // );
+    this.inventoryService.deleteData(dishId).subscribe({
+      next: (response: any) => {
+        console.log(response);
+
+        this.fetchDishes();
+        this.toast.success('<p>Dish Deleted Successfully</p>', '', {
+          enableHtml: true,
+        });
+      },
+      error: (error: any) => {
+        console.error('Error deleting dish:', error);
+        this.toast.error('<p>Server Error</p>', '', {
+          enableHtml: true,
+        });
+      },
+    });
   }
 }

@@ -4,7 +4,7 @@
 >
   <div class="bg-white w-96 p-8 rounded-md shadow-lg">
     <h2 class="text-2xl font-normal mb-4">Add a Dish</h2>
-    <form (ngSubmit)="submitForm()" #form="ngForm" class="space-y-4">
+    <form #form="ngForm" class="space-y-4">
       <div>
         <label for="name" class="block text-base">Name</label>
         <input
@@ -54,7 +54,7 @@
       </div>
       <div class="flex justify-end">
         <button
-          type="submit"
+          (click)="addDish()"
           class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-md disabled:opacity-50 mr-5"
         >
           Submit
