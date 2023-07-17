@@ -5,10 +5,13 @@
         Order ID
       </th>
       <th class="py-2 px-4 bg-gray-200 font-medium text-left uppercase text-sm">
-        Customer Name
+        Customer Email
       </th>
       <th class="py-2 px-4 bg-gray-200 font-medium text-left uppercase text-sm">
-        Total Amount
+        Dish ID
+      </th>
+      <th class="py-2 px-4 bg-gray-200 font-medium text-left uppercase text-sm">
+        Total Amount($)
       </th>
       <th class="py-2 px-4 bg-gray-200 font-medium text-left uppercase text-sm">
         Status
@@ -25,10 +28,13 @@
     <tr *ngFor="let order of orderItems">
       <td class="py-2 px-4 border-b border-gray-200">{{ order.id }}</td>
       <td class="py-2 px-4 border-b border-gray-200">
-        {{ order.name }}
+        {{ order.email }}
       </td>
       <td class="py-2 px-4 border-b border-gray-200">
-        {{ order.price }}
+        {{ order.item_id }}
+      </td>
+      <td class="py-2 px-4 border-b border-gray-200">
+        {{ order.total_price }}
       </td>
       <td class="py-2 px-4 border-b border-gray-200">{{ order.status }}</td>
       <td class="py-2 px-4 border-b border-gray-200">{{ order.rating }}</td>
@@ -39,9 +45,10 @@
           (change)="updateOrderStatus(order)"
         >
           <option value="Received">Received</option>
-          <option value="In Progress">In Progress</option>
-          <option value="Delivered">Delivered</option>
-          <option value="Cancelled">Cancelled</option>
+          <option value="Preparing">Preparing</option>
+          <option value="Ready">Ready</option>
+          <option value="Pickup">Pickup</option>
+          <option value="Delievered">Delievered</option>
         </select>
       </td>
     </tr>
