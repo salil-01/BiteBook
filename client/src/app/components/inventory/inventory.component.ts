@@ -24,13 +24,16 @@ export class InventoryComponent implements OnInit {
   ) {}
 
   fetchDishes(): void {
+    this.spinner.show();
     this.inventoryService.fetchData().subscribe({
       next: (res) => {
         console.log(res);
         this.inventoryItems = res;
+        this.spinner.hide();
       },
       error: (error) => {
         console.log(error);
+        this.spinner.hide();
         this.toast.error('<p>Server Error</p>', '', {
           enableHtml: true,
         });

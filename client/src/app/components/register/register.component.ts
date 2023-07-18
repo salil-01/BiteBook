@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -8,7 +9,11 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
-  constructor(private router: Router, private toast: ToastrService) {}
+  constructor(
+    private router: Router,
+    private toast: ToastrService,
+    private spinner: NgxSpinnerService
+  ) {}
   email: string = '';
   password: string = '';
   role: string = 'user';

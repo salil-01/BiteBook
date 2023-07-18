@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/services/auth.service';
 import { MenuService } from 'src/app/services/menu.service';
@@ -15,19 +16,23 @@ export class MenuComponent implements OnInit {
   constructor(
     private menuService: MenuService,
     private toast: ToastrService,
-    public authService: AuthService
+    public authService: AuthService,
+    private spinner: NgxSpinnerService
   ) {
     // console.log(this.authService.auth);
   }
   // function to fetch Menu
 
   fetchMenu() {
+    this.spinner.show();
     this.menuService.fetchData().subscribe({
       next: (res) => {
         this.menuItems = res;
+        this.spinner.hide();
         console.log(res);
       },
       error: (error) => {
+        this.spinner.hide();
         console.log(error);
       },
     });
@@ -47,15 +52,18 @@ export class MenuComponent implements OnInit {
   placeOrder(dishId: number, quantity: number | null) {
     if (quantity !== null && quantity !== undefined) {
       if (this.authService.auth) {
+        this.spinner.show();
         this.menuService.postOrder(dishId, quantity).subscribe({
           next: (res) => {
             console.log(res);
+            this.spinner.hide();
             this.toast.success('<p>Order Placed Successfully</p>', '', {
               enableHtml: true,
             });
           },
           error: (error) => {
             console.log(error);
+            this.spinner.hide();
             this.toast.error('<p>Server Error</p>', '', {
               enableHtml: true,
             });

@@ -9,7 +9,7 @@ import { AuthService } from './auth.service';
   providedIn: 'root',
 })
 export class InventoryService {
-  // creating a observable to subscribe to changes
+  // creating a observable to subscribe to changes that can be triggered from edit modal and add modal
   private dataSubject = new Subject<void>();
   data$ = this.dataSubject.asObservable();
 
