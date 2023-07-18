@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { EditmodalComponent } from '../components/editmodal/editmodal.component';
 import { RegisterComponent } from '../components/register/register.component';
 import { UserorderComponent } from '../components/userorder/userorder.component';
+import { UserauthService } from '../guards/userauth.service';
 import { AdminComponent } from '../pages/admin/admin.component';
 import { HomepageComponent } from '../pages/homepage/homepage.component';
 import { LoginComponent } from '../pages/login/login.component';
@@ -24,6 +25,7 @@ const routes: Routes = [
   {
     path: 'menu',
     component: MenuComponent,
+    canActivate: [UserauthService],
   },
   {
     path: 'admin',

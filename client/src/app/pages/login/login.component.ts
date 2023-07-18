@@ -28,24 +28,14 @@ export class LoginComponent {
     this.authService.loginUser(formData).subscribe({
       next: (res) => {
         console.log(res);
-        this.authService.auth = true;
-        this.authService.email = res.email;
-        this.authService.role = res.role;
-        this.authService.token = res.token;
-        setLocalStorageItem('token', res.token);
-        setLocalStorageItem('auth', true);
-        setLocalStorageItem('email', res.email);
-        setLocalStorageItem('role', res.role);
+        this.authService.updateLoginCredential(res.email, res.token, res.role);
         this.toast.success('<p>Login Successfull</p>', '', {
           enableHtml: true,
         });
       },
       error: (error) => {
         console.log(error);
-        this.authService.auth = false;
-        this.authService.token = '';
-        this.authService.role = '';
-        this.authService.email = '';
+        this.authService.logOut();
         this.toast.error('<p>Incorrect Credentials/Server Error</p>', '', {
           enableHtml: true,
         });
