@@ -31,3 +31,8 @@ export interface adminOrder {
   status: string;
   rating: number;
 }
+
+export interface reviewMsg {
+  rating: number;
+  review_comment: string;
+}

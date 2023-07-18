@@ -1,9 +1,8 @@
-import { AfterViewInit, Component, Inject, ViewChild } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { dishInventory } from 'src/app/constants/models';
 import { InventoryService } from 'src/app/services/inventory.service';
-import { InventoryComponent } from '../inventory/inventory.component';
 
 @Component({
   selector: 'app-editmodal',
@@ -11,9 +10,9 @@ import { InventoryComponent } from '../inventory/inventory.component';
   styleUrls: ['./editmodal.component.css'],
 })
 export class EditmodalComponent {
-  @ViewChild(InventoryComponent)
-  sourceComponent!: InventoryComponent;
   editedDish: dishInventory;
+
+  // constructor
   constructor(
     private inventoryService: InventoryService,
     private toast: ToastrService,
@@ -26,6 +25,7 @@ export class EditmodalComponent {
     this.inventoryService.updateData(this.editedDish).subscribe({
       next: (res) => {
         console.log(res);
+        // emitting event to fetch data again
         this.inventoryService.notifyDataChange();
         this.toast.success('<p>Dish Updated Successfully</p>', '', {
           enableHtml: true,

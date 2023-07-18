@@ -35,6 +35,8 @@ export class AddmodalComponent {
       this.inventoryService.addData(this.item).subscribe({
         next: (res) => {
           console.log(res);
+
+          // emitting event to fetch data again
           this.inventoryService.notifyDataChange();
           this.toast.success('<p>Dish Added Successfully</p>', '', {
             enableHtml: true,

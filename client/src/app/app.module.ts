@@ -23,6 +23,7 @@ import { AddmodalComponent } from './components/addmodal/addmodal.component';
 import { AdminorderComponent } from './components/adminorder/adminorder.component';
 import { CommonModule } from '@angular/common';
 import { UserorderComponent } from './components/userorder/userorder.component';
+import { ReviewmodalComponent } from './components/reviewmodal/reviewmodal.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { UserorderComponent } from './components/userorder/userorder.component';
     AddmodalComponent,
     AdminorderComponent,
     UserorderComponent,
+    ReviewmodalComponent,
   ],
   imports: [
     BrowserModule,

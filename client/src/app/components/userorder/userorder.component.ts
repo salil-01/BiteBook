@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { UserorderService } from 'src/app/services/userorder.service';
+import { ReviewmodalComponent } from '../reviewmodal/reviewmodal.component';
 
 @Component({
   selector: 'app-userorder',
@@ -12,7 +14,8 @@ export class UserorderComponent implements OnInit {
 
   constructor(
     private userOrderService: UserorderService,
-    private toast: ToastrService
+    private toast: ToastrService,
+    private dialog: MatDialog
   ) {}
 
   // fetch order of a user
@@ -36,9 +39,9 @@ export class UserorderComponent implements OnInit {
     this.fetchOrders();
   }
 
-  addReview(orderId: number, status: string) {
+  addReview(orderId: number, status: string, rating: number) {
     if (status !== 'Delievered') {
-      this.toast.error(
+      this.toast.info(
         '<p>Please wait until your order get delievered...</p>',
         '',
         {
@@ -47,6 +50,16 @@ export class UserorderComponent implements OnInit {
       );
       return;
     }
+    if (rating !== 0) {
+      this.toast.info('<p>Review already Submitted</p>', '', {
+        enableHtml: true,
+      });
+      return;
+    }
     console.log(orderId);
+    this.dialog.open(ReviewmodalComponent, {
+      width: '400px',
+      data: { orderId },
+    });
   }
 }
