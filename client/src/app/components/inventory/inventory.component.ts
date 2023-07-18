@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 
 import { dishInventory } from 'src/app/constants/models';
@@ -40,24 +40,19 @@ export class InventoryComponent implements OnInit {
   // fetching dishes on mount
   ngOnInit(): void {
     this.fetchDishes();
+
+    // listening to even emitted when a new dish is added or updated from modals
     this.inventoryService.data$.subscribe(() => {
       this.fetchDishes();
     });
   }
 
-  // ngAfterViewInit() {
-  //   // Trigger the event after the component's view has been initialized
-  //   this.inventoryService.myEvent.subscribe(() => {
-  //     this.fetchDishes();
-  //   });
-  // }
   editDish(dish: dishInventory): void {
     this.dialog.open(EditmodalComponent, {
       width: '400px',
       data: { dish },
     });
   }
-  // listening to even emitted
 
   deleteDish(dishId: number): void {
     console.log(dishId);

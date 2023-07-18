@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { EditmodalComponent } from '../components/editmodal/editmodal.component';
 import { RegisterComponent } from '../components/register/register.component';
 import { UserorderComponent } from '../components/userorder/userorder.component';
+import { AdminauthService } from '../guards/adminauth.service';
 import { UserauthService } from '../guards/userauth.service';
 import { AdminComponent } from '../pages/admin/admin.component';
 import { HomepageComponent } from '../pages/homepage/homepage.component';
@@ -30,10 +30,12 @@ const routes: Routes = [
   {
     path: 'admin',
     component: AdminComponent,
+    canActivate: [AdminauthService],
   },
   {
     path: 'myorders',
     component: UserorderComponent,
+    canActivate: [UserauthService],
   },
 ];
 
