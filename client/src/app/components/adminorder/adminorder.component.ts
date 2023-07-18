@@ -10,6 +10,8 @@ import { AdminorderService } from 'src/app/services/adminorder.service';
 })
 export class AdminorderComponent implements OnInit {
   orderItems = <any>[];
+
+  // constructor
   constructor(
     private orderService: AdminorderService,
     private toast: ToastrService
@@ -29,13 +31,14 @@ export class AdminorderComponent implements OnInit {
       },
     });
   }
+
   // fetching dishes on mount
   ngOnInit(): void {
     this.fetchOrders();
   }
 
   updateOrderStatus(order: adminOrder) {
-    console.log(order);
+    // console.log(order);
     this.orderService.updateOrder(order).subscribe({
       next: (res) => {
         console.log(res);
@@ -51,10 +54,5 @@ export class AdminorderComponent implements OnInit {
         });
       },
     });
-    // this.orderService.updateOrderStatus(order.id, order.status).subscribe(() => {
-    //   // Order status updated successfully
-    //   // You can update the orders array or refresh the data from the server
-    //   this.getOrders();
-    // });
   }
 }

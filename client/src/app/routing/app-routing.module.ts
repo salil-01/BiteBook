@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { EditmodalComponent } from '../components/editmodal/editmodal.component';
 import { RegisterComponent } from '../components/register/register.component';
+import { UserorderComponent } from '../components/userorder/userorder.component';
 import { AdminComponent } from '../pages/admin/admin.component';
 import { HomepageComponent } from '../pages/homepage/homepage.component';
 import { LoginComponent } from '../pages/login/login.component';
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: 'admin',
     component: AdminComponent,
+  },
+  {
+    path: 'myorders',
+    component: UserorderComponent,
   },
 ];
 

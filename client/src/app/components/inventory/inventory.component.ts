@@ -12,7 +12,7 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './inventory.component.html',
   styleUrls: ['./inventory.component.css'],
 })
-export class InventoryComponent implements OnInit, AfterViewInit {
+export class InventoryComponent implements OnInit {
   isLoading: boolean = false;
 
   inventoryItems = <any>[];
@@ -40,14 +40,17 @@ export class InventoryComponent implements OnInit, AfterViewInit {
   // fetching dishes on mount
   ngOnInit(): void {
     this.fetchDishes();
-  }
-
-  ngAfterViewInit() {
-    // Trigger the event after the component's view has been initialized
-    this.inventoryService.myEvent.subscribe(() => {
+    this.inventoryService.data$.subscribe(() => {
       this.fetchDishes();
     });
   }
+
+  // ngAfterViewInit() {
+  //   // Trigger the event after the component's view has been initialized
+  //   this.inventoryService.myEvent.subscribe(() => {
+  //     this.fetchDishes();
+  //   });
+  // }
   editDish(dish: dishInventory): void {
     this.dialog.open(EditmodalComponent, {
       width: '400px',

@@ -58,10 +58,12 @@
           />
         </button>
         <ul
-          class="absolute right-0 mt-2 rounded-md bg-white border border-dotted border-gray-400 shadow-lg p-5 w-40"
+          class="absolute right-0 mt-2 rounded-md bg-white border border-dotted border-gray-400 shadow-lg p-5 w-40 z-20 text-lg"
           [class.hidden]="!showProfileMenu"
         >
-          <li><a routerLink="/orders">Orders</a></li>
+          <li>
+            <a routerLink="/myorders">Orders</a>
+          </li>
           <li><button (click)="logout()">Logout</button></li>
         </ul>
       </div>

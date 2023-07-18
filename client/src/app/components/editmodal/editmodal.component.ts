@@ -26,7 +26,7 @@ export class EditmodalComponent {
     this.inventoryService.updateData(this.editedDish).subscribe({
       next: (res) => {
         console.log(res);
-        this.inventoryService.triggerEvent();
+        this.inventoryService.notifyDataChange();
         this.toast.success('<p>Dish Updated Successfully</p>', '', {
           enableHtml: true,
         });

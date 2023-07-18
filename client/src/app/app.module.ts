@@ -5,12 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { NgxSpinnerModule } from 'ngx-spinner';
-import {
-  ToastContainerDirective,
-  ToastrModule,
-  ToastrService,
-  ToastrConfig,
-} from 'ngx-toastr';
+import { ToastrModule } from 'ngx-toastr';
 import { AppRoutingModule } from './routing/app-routing.module';
 import { AppComponent } from './app.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
@@ -22,12 +17,12 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { MenuComponent } from './pages/menu/menu.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { InventoryComponent } from './components/inventory/inventory.component';
-import { OrdersComponent } from './components/orders/orders.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EditmodalComponent } from './components/editmodal/editmodal.component';
 import { AddmodalComponent } from './components/addmodal/addmodal.component';
 import { AdminorderComponent } from './components/adminorder/adminorder.component';
 import { CommonModule } from '@angular/common';
+import { UserorderComponent } from './components/userorder/userorder.component';
 
 @NgModule({
   declarations: [
@@ -40,10 +35,10 @@ import { CommonModule } from '@angular/common';
     MenuComponent,
     AdminComponent,
     InventoryComponent,
-    OrdersComponent,
     EditmodalComponent,
     AddmodalComponent,
     AdminorderComponent,
+    UserorderComponent,
   ],
   imports: [
     BrowserModule,

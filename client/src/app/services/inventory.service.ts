@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { addDishItem, dishInventory } from '../constants/models';
 import { AuthService } from './auth.service';
@@ -8,8 +9,18 @@ import { AuthService } from './auth.service';
   providedIn: 'root',
 })
 export class InventoryService {
-  myEvent: EventEmitter<void> = new EventEmitter<void>();
+  // creating a observable to subscribe to changes
+  private dataSubject = new Subject<void>();
+  data$ = this.dataSubject.asObservable();
+
+  // constructor
   constructor(private authService: AuthService, private http: HttpClient) {}
+
+  // emit event to update dishes
+  notifyDataChange(): void {
+    this.dataSubject.next();
+  }
+
   // fetch dish
   fetchData() {
     const headers = new HttpHeaders().set(
@@ -17,11 +28,6 @@ export class InventoryService {
       `Bearer ${this.authService?.token}`
     );
     return this.http.get<any>(`${environment.apiUrl}/dish`, { headers });
-  }
-  // emit event to update dishes
-  triggerEvent() {
-    // Emit the event without any data payload
-    this.myEvent.emit();
   }
 
   // add dish

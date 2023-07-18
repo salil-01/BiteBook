@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { adminOrder } from '../constants/models';
 import { AuthService } from './auth.service';
@@ -8,7 +9,14 @@ import { AuthService } from './auth.service';
   providedIn: 'root',
 })
 export class AdminorderService {
+  // creating a observable to subscribe to changes
+  private dataSubject = new Subject<void>();
+  data$ = this.dataSubject.asObservable();
+
+  //  constructor
   constructor(private authService: AuthService, private http: HttpClient) {}
+
+  // functionality
   fetchData() {
     const headers = new HttpHeaders().set(
       'Authorization',

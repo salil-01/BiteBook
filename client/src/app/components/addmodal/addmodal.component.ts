@@ -16,11 +16,15 @@ export class AddmodalComponent {
     stock: '',
     availability: '',
   };
+
+  // constructor
   constructor(
     public dialogRef: MatDialogRef<AddmodalComponent>,
     private toast: ToastrService,
     private inventoryService: InventoryService
   ) {}
+
+  // functionality
   addDish() {
     if (
       this.item.name &&
@@ -31,10 +35,11 @@ export class AddmodalComponent {
       this.inventoryService.addData(this.item).subscribe({
         next: (res) => {
           console.log(res);
-          this.inventoryService.triggerEvent();
+          this.inventoryService.notifyDataChange();
           this.toast.success('<p>Dish Added Successfully</p>', '', {
             enableHtml: true,
           });
+          this.closeModal();
         },
         error: (error) => {
           console.log(error);
