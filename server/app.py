@@ -94,6 +94,11 @@ def authenticate_and_authorize():
 
 
 # ------------------------ routes ----------------------
+# home page
+@app.route("/", methods=["GET"])
+def home():
+    return jsonify({"msg":"You are running BiteBook successfully"})
+
 # user routes
 @app.route('/register', methods=['POST'])
 def register():
@@ -569,4 +574,4 @@ def add_review():
 
 
 if __name__ == '__main__':
-    app.run(port=port or 3000)
+    app.run(host="0.0.0.0",port=port or 5000)
