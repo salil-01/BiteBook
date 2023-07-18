@@ -25,7 +25,6 @@ const routes: Routes = [
   {
     path: 'menu',
     component: MenuComponent,
-    canActivate: [UserauthService],
   },
   {
     path: 'admin',

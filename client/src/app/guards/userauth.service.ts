@@ -19,7 +19,7 @@ export class UserauthService implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): boolean | UrlTree {
-    if (this.authService.isUser()) {
+    if (this.authService.isUser() || this.authService.isAdmin()) {
       return true;
     } else {
       return this.router.parseUrl('/login');

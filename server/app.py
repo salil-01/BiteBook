@@ -124,6 +124,7 @@ def login():
     query = "SELECT * FROM users WHERE email = %s"
     cursor.execute(query, (email,))
     user_data = cursor.fetchone()
+    connection.commit()
     cursor.close()
 
     if user_data is not None and user_data[2] == password:
@@ -178,7 +179,9 @@ def get_menu():
             "stock": item[4]
         }
         menu_items.append(dish)
+    connection.commit()
     cursor.close()
+
     print(menu_items)
     return jsonify(menu_items), 200
 
@@ -199,6 +202,8 @@ def get_dishes_with_reviews():
         '''
     cursor.execute(query)
     rows = cursor.fetchall()
+    connection.commit()
+    cursor.close()
     # print(rows)
     # Group the reviews by dish_id
     dishes = {}
@@ -224,7 +229,6 @@ def get_dishes_with_reviews():
     dishes_list = list(dishes.values())
 
     # Close the connection
-    cursor.close()
 
     return jsonify(dishes_list), 200
 
@@ -306,6 +310,9 @@ def get_all_items():
 
     # Fetch all rows from the result set
     items = cursor.fetchall()
+    connection.commit()
+    cursor.close()
+
 
     # Convert the list of tuples to a list of dictionaries
     items_list = []
@@ -320,7 +327,6 @@ def get_all_items():
         items_list.append(item_dict)
 
     # Close the cursor and database connection
-    cursor.close()
 
     # Return the list of items as JSON response
     return jsonify(items_list), 200
@@ -415,6 +421,8 @@ def display_orders():
 
     # Fetch all rows from the result set
     orders = cursor.fetchall()
+    connection.commit()
+    cursor.close()
     # print(orders)
     result = []
     for item in orders:
@@ -429,7 +437,6 @@ def display_orders():
         }
         result.append(order_dict)
     # print(result)
-    cursor.close()
     return jsonify({'orders': result}), 200
 
 # orders of specific user
