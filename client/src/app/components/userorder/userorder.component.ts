@@ -39,7 +39,7 @@ export class UserorderComponent implements OnInit {
     this.fetchOrders();
   }
 
-  addReview(orderId: number, status: string, rating: number) {
+  addReview(orderId: number, status: string, rating: number, item_id: number) {
     if (status !== 'Delievered') {
       this.toast.info(
         '<p>Please wait until your order get delievered...</p>',
@@ -59,7 +59,7 @@ export class UserorderComponent implements OnInit {
     console.log(orderId);
     this.dialog.open(ReviewmodalComponent, {
       width: '400px',
-      data: { orderId },
+      data: { orderId, item_id },
     });
   }
 }
