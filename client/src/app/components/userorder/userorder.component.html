@@ -5,7 +5,11 @@
   type="ball-grid-pulse"
   [fullScreen]="false"
 ></ngx-spinner>
-<div *ngIf="orders.length === 0" class="text-center mt-12">
+<div
+  *ngIf="orders.length === 0"
+  class="text-center mt-12"
+  style="min-height: 80vh"
+>
   <h2 class="text-3xl font-normal mb-4 text-coral">
     No Order History Found...
   </h2>

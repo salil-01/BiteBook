@@ -1,72 +1,158 @@
 <nav
-  class="shadow-lg max-h-14"
+  class="text-white"
   style="
     background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
   "
 >
-  <div class="container mx-auto flex items-center justify-between">
-    <!-- Logo -->
-    <div class="flex items-center">
+  <div
+    class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
+  >
+    <a routerLink="#" class="flex items-center">
       <img
         src="https://res.cloudinary.com/dn6unnbju/image/upload/v1689445758/whitetxt-removebg-preview_d9dici.png"
+        class="h-11 md:h-14 mr-3"
         alt="Logo"
-        class="h-14 border border-black"
       />
-    </div>
-
-    <!-- Links -->
-    <div class="flex items-center px-4 py-2">
-      <a routerLink="/" class="text-white hover:text-gray-200 text-lg mx-2"
-        >Home</a
+    </a>
+    <div class="flex items-center md:order-2">
+      <button
+        type="button"
+        class="text-gray-700 bg-white focus:outline-none hover:bg-gray-100 font-medium rounded-md text-sm px-5 py-2.5 mr-2 w-28"
+        *ngIf="authService.auth === false"
+        (click)="handleLogin()"
       >
-      <a routerLink="/menu" class="text-white hover:text-gray-200 text-lg mx-2"
-        >Menu</a
+        Login
+      </button>
+      <button
+        type="button"
+        *ngIf="authService.auth === true"
+        class="flex mr-3 text-base bg-transparent rounded-full md:mr-0 focus:ring-4 focus:ring-gray-400 dark:focus:ring-gray-600"
+        id="user-menu-button"
+        aria-expanded="false"
+        data-dropdown-toggle="user-dropdown"
+        data-dropdown-placement="bottom"
       >
-
-      <!-- Admin Link (conditional display) -->
-      <a
-        *ngIf="authService.role === 'Admin'"
-        routerLink="/admin"
-        class="text-white hover:text-gray-200 mx-2 text-lg"
-        >Admin</a
+        <span class="sr-only">Open user menu</span>
+        <img
+          class="w-10 h-10 rounded-full"
+          src="https://img.icons8.com/?size=512&id=7819&format=png"
+          alt="user photo"
+        />
+      </button>
+      <!-- Dropdown menu -->
+      <div
+        class="z-50 hidden my-4 text-base p-3 list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
+        id="user-dropdown"
       >
-
-      <!-- Login/Register Links -->
-      <a
-        routerLink="/login"
-        *ngIf="!authService.auth"
-        class="text-white hover:text-gray-200 mx-2 text-lg"
-        >Login</a
-      >
-      <a
-        *ngIf="!authService.auth"
-        routerLink="/register"
-        class="text-white hover:text-gray-200 mx-2 text-lg"
-        >Register</a
-      >
-
-      <!-- Profile Menu -->
-      <div class="relative" *ngIf="authService.auth">
-        <button
-          class="text-white hover:text-gray-200 mx-2 focus:outline-none"
-          (click)="toggleProfileMenu()"
-        >
-          <img
-            src="https://img.icons8.com/?size=512&id=7819&format=png"
-            alt="Profile"
-            class="h-8"
-          />
-        </button>
-        <ul
-          class="absolute right-0 mt-2 rounded-md bg-white border border-dotted border-gray-400 shadow-lg p-5 w-40 z-20 text-lg"
-          [class.hidden]="!showProfileMenu"
-        >
-          <li>
-            <a routerLink="/myorders">Orders</a>
+        <div class="px-4 py-3">
+          <span class="block text-sm text-gray-900 dark:text-white"
+            >Hello !</span
+          >
+          <span
+            class="block text-sm text-gray-500 truncate dark:text-gray-400"
+            >{{ authService.email }}</span
+          >
+        </div>
+        <ul class="py-2" aria-labelledby="user-menu-button">
+          <li *ngIf="authService.role === 'Admin'">
+            <a
+              routerLink="/admin"
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+              >Admin Dashboard</a
+            >
           </li>
-          <li><button (click)="logout()">Logout</button></li>
+          <li>
+            <a
+              routerLink="/myorders"
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+              >My Orders</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="#"
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+              >Settings</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/"
+              (click)="logout()"
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+              >Logout</a
+            >
+          </li>
         </ul>
       </div>
+      <button
+        data-collapse-toggle="navbar-user"
+        type="button"
+        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-200 rounded-lg md:hidden hover:bg-gray-100 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+        aria-controls="navbar-user"
+        aria-expanded="false"
+      >
+        <span class="sr-only">Open main menu</span>
+        <svg
+          class="w-5 h-5"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 17 14"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M1 1h15M1 7h15M1 13h15"
+          />
+        </svg>
+      </button>
+    </div>
+    <div
+      class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
+      id="navbar-user"
+    >
+      <ul
+        class="flex flex-col bg-white text-white font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-8 md:bg-inherit md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
+      >
+        <li>
+          <a
+            routerLink="/"
+            class="block py-2 pl-3 pr-4 hover:bg-gray-100 text-gray-800 rounded md:text-white md:p-0 md:bg-transparent md:hover:bg-transparent md:text-lg"
+            >Home</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/register"
+            class="block py-2 pl-3 pr-4 hover:bg-gray-100 text-gray-800 rounded md:text-white md:p-0 md:bg-transparent md:hover:bg-transparent md:text-lg"
+            >Register</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/menu"
+            class="block py-2 pl-3 pr-4 hover:bg-gray-100 text-gray-800 rounded md:text-white md:p-0 md:bg-transparent md:hover:bg-transparent md:text-lg"
+            >Menu</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/"
+            class="block py-2 pl-3 pr-4 hover:bg-gray-100 text-gray-800 rounded md:text-white md:p-0 md:bg-transparent md:hover:bg-transparent md:text-lg"
+            >Locate</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/"
+            class="block py-2 pl-3 pr-4 hover:bg-gray-100 text-gray-800 rounded md:text-white md:p-0 md:bg-transparent md:hover:bg-transparent md:text-lg"
+            >Contact</a
+          >
+        </li>
+      </ul>
     </div>
   </div>
 </nav>

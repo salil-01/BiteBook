@@ -19,17 +19,23 @@ export class AuthService {
   email = '';
 
   constructor(private http: HttpClient, private toast: ToastrService) {
-    this.auth = getLocalStorageItem('auth');
+    this.auth = getLocalStorageItem('auth') || false;
     this.role = getLocalStorageItem('role');
     this.token = getLocalStorageItem('token');
     this.email = getLocalStorageItem('email');
   }
 
-  // making post request with user data
+  // making post request with user data - login
   loginUser(userData: User): Observable<any> {
     const body = { ...userData };
     return this.http.post<any>(`${environment.apiUrl}/login`, body);
   }
+
+  // register
+  registerUser(userData: any) {
+    return this.http.post<any>(`${environment.apiUrl}/register`, userData);
+  }
+
   updateLoginCredential(email: string, token: string, role: string): void {
     this.email = email;
     this.token = token;

@@ -6,7 +6,7 @@
   [fullScreen]="false"
 ></ngx-spinner>
 <section class="gradient-form h-full bg-neutral-200 dark:bg-neutral-700">
-  <div class="container h-full p-10">
+  <div class="container h-full p-3 md:p-10">
     <div
       class="g-6 flex h-full flex-wrap items-center justify-center text-neutral-800 dark:text-neutral-200"
     >
@@ -39,7 +39,7 @@
                       name="email"
                       [(ngModel)]="loginForm.email"
                       required
-                      class="peer block min-h-[auto] w-full rounded border-2 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none"
+                      class="peer block min-h-[auto] w-full rounded bg-transparent border-gray-300 focus:border-gray-300 focus:ring-0 px-3 py-[0.32rem] leading-[1.6] outline-none"
                       id="exampleFormControlInput1"
                       placeholder="Email"
                     />
@@ -53,7 +53,7 @@
                       name="password"
                       [(ngModel)]="loginForm.password"
                       required
-                      class="peer block min-h-[auto] w-full rounded border-2 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none"
+                      class="peer block min-h-[auto] w-full rounded border-gray-300 focus:border-gray-300 focus:ring-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none"
                       id="exampleFormControlInput11"
                       placeholder="Password"
                     />

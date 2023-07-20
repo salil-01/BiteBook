@@ -30,7 +30,7 @@ export class LoginComponent {
     this.spinner.show();
     this.authService.loginUser(formData).subscribe({
       next: (res) => {
-        console.log(res);
+        // console.log(res);
         this.authService.updateLoginCredential(res.email, res.token, res.role);
         this.spinner.hide();
         this.toast.success('<p>Login Successfull</p>', '', {
@@ -39,7 +39,6 @@ export class LoginComponent {
       },
       error: (error) => {
         console.log(error);
-        this.authService.logOut();
         this.spinner.hide();
         this.toast.error('<p>Incorrect Credentials/Server Error</p>', '', {
           enableHtml: true,
