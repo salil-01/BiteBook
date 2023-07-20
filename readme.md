@@ -1,6 +1,6 @@
 # Bite Book
 
-![Book Bite App Logo]()
+ <img src="https://res.cloudinary.com/dn6unnbju/image/upload/v1689424108/foodapp_ac0lae.png" alt="logo" width="150px" height="150px">
 
 ## Description
 
