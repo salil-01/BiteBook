@@ -27,7 +27,8 @@ app.config['MYSQL_HOST'] = host
 app.config['MYSQL_USER'] = username
 app.config['MYSQL_PASSWORD'] = password
 app.config['MYSQL_DB'] = databasename
-# print(username)
+
+
 # mysql connection
 try:
     connection = mysql.connector.connect(
@@ -97,9 +98,11 @@ def authenticate_and_authorize():
 # home page
 @app.route("/", methods=["GET"])
 def home():
-    return jsonify({"msg":"You are running BiteBook successfully"})
+    return jsonify({"msg": "You are running BiteBook successfully"})
 
 # user routes
+
+
 @app.route('/register', methods=['POST'])
 def register():
     email = request.json.get('email')
@@ -317,7 +320,6 @@ def get_all_items():
     items = cursor.fetchall()
     connection.commit()
     cursor.close()
-
 
     # Convert the list of tuples to a list of dictionaries
     items_list = []
@@ -574,4 +576,4 @@ def add_review():
 
 
 if __name__ == '__main__':
-    app.run(debug=False,host="0.0.0.0",port=port or 5000 )
+    app.run(debug=False, host="0.0.0.0", port=port or 5000)
