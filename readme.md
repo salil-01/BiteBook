@@ -1,4 +1,4 @@
-<div align="center">
+![user-order](https://github.com/salil-01/BiteBook/assets/115460357/8890d317-4464-4a8e-bb00-b9bb17bc030f)<div align="center">
     <img src="https://res.cloudinary.com/dn6unnbju/image/upload/v1689424108/foodapp_ac0lae.png" alt="logo" width="150px" height="150px">
 </div>
 
@@ -173,8 +173,23 @@ If you would like to contribute to the Bite Book App, please follow these steps:
 If you have any questions or suggestions, please feel free to contact us at upsalil.01@gmail.com.
 
 ## Screenshots
+### Homepage
+![homepage](https://github.com/salil-01/BiteBook/assets/115460357/93a1771a-6527-4727-979a-d468a73b19cb)
 
-![Screenshot 1](link-to-your-screenshot-1)
+### Login
+![login](https://github.com/salil-01/BiteBook/assets/115460357/70059f02-c148-49e7-927c-5117049ed8c3)
 
-![Screenshot 2](link-to-your-screenshot-2)
+### Register
+![register](https://github.com/salil-01/BiteBook/assets/115460357/1a3dd938-729f-49f8-82d7-610bfff8955e)
+
+### Menu
+![menu](https://github.com/salil-01/BiteBook/assets/115460357/2320e385-312d-4f9c-b6de-4c40c26343b7)
+
+### Admin Dashboard
+![admin-dash](https://github.com/salil-01/BiteBook/assets/115460357/412acffc-e67d-433b-9cbb-75a066aefacb)
+
+### User Orders
+![user-order](https://github.com/salil-01/BiteBook/assets/115460357/aeeb905f-5cae-4fd5-8ab4-0b6f33fc823b)
+
+
 
