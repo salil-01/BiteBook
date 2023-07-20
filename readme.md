@@ -34,7 +34,7 @@ This project was developed as a learning experience to explore new technology st
 
 ## Deployment
 
-The Book Bite App is deployed and accessible at [https://bitebook.netlify.app/](https://bitebook.netlify.app/)
+- The BiteBook App is deployed and accessible at [https://bitebook.netlify.app/](https://bitebook.netlify.app/)
 
 ## Installation and Setup
 
@@ -46,13 +46,13 @@ The Book Bite App is deployed and accessible at [https://bitebook.netlify.app/](
 2. Clone the Bite Book App repository:
 
    ```
-   git clone <https://github.com/salil-01/BiteBook>
+   git clone https://github.com/salil-01/BiteBook
    cd BiteBook
    ```
 
 3. Set up the Flask backend:
 
-   - Navigate to the `Book Bite-app/server` directory:
+   - Navigate to the `BitebBook/server` directory:
      ```
      cd server
      ```
@@ -139,16 +139,19 @@ The Book Bite App is deployed and accessible at [https://bitebook.netlify.app/](
 ## Project Structure
 
 ```
-BiteBook/
-|-- client/
-|   |-- src/
-|   |   |-- app/
-|   |   |-- assets/
-|   |   |-- ...
-|   |-- ...
-|
-|-- server/
-|   |-- app/
+.
+├── client
+│   └── src
+│       └── app
+│           ├── components
+│           ├── services
+│           ├── constants
+│           ├── guards
+│           ├── pages
+│           └── routing
+└── server
+    ├── app.py
+    └── requirements.txt
 ```
 
 ## Contribution
