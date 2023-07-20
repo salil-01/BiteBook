@@ -6,7 +6,7 @@
 
 Bite Book is a full-stack web application that allows users to explore various delicious food items, view their details, and place orders for their favorite dishes. The application is designed to provide a seamless and user-friendly experience for food enthusiasts to discover and order their desired meals.
 
-This project was developed by me as a learning experience to explore new technology stacks, including Angular, Flask, and Tailwind CSS. As a beginner, I was not familiar with these technologies, but with the help of generative AI and the guidance provided, I was able to learn and implement them effectively within a short period of time.
+This project was developed as a learning experience to explore new technology stacks, including Angular, Flask, and Tailwind CSS. As a beginner, I was not familiar with these technologies, but with the help of generative AI and the guidance provided, I was able to learn and implement them effectively within a short period of time.
 
 ## Features
 
@@ -24,13 +24,17 @@ This project was developed by me as a learning experience to explore new technol
 
 ## Technologies Used
 
-- **Frontend**: Angular (with Angular Material for some components)
+- **Frontend**: Angular, HTML, ES6, TypeScript
 
-- **Backend**: Flask (Python) with a relational database (e.g., PostgreSQL)
+- **Backend**: Flask (Python), Relational DB (MySQL)
 
-- **Styling**: Tailwind CSS
+- **Styling**: Tailwind CSS, CSS, Angular Material
 
 - **Authentication**: JWT (JSON Web Tokens)
+
+## Deployment
+
+The Book Bite App is deployed and accessible at [https://bitebook.netlify.app/](https://bitebook.netlify.app/)
 
 ## Installation and Setup
 
@@ -55,7 +59,8 @@ This project was developed by me as a learning experience to explore new technol
    - Create a virtual environment (optional but recommended):
      ```
      python3 -m venv myenv
-     source myenv/bin/activate   # On Windows: myenv\Scripts\activate      # On Linux / MacOS:
+     source myenv/bin/activate   # On Windows:
+     myenv\Scripts\activate      # On Linux / MacOS:
      ```
    - Install Flask and other dependencies:
      ```
@@ -63,7 +68,7 @@ This project was developed by me as a learning experience to explore new technol
      ```
    - Set up the database and initialize tables (assuming you have PostgreSQL installed):
      ```
-     createdb Book Bite_db
+     createdb your_database_name
      python manage.py db init
      python manage.py db migrate
      python manage.py db upgrade
@@ -120,15 +125,16 @@ This project was developed by me as a learning experience to explore new technol
 
 ## Usage
 
-1. Open your web browser and navigate to `http://localhost:4200` to access the Book Bite App frontend after completing necessary installation = or you can access it on web at `https://bitebook.netlify.app/`.
+1. Open your web browser and navigate to `http://localhost:4200` to access the Book Bite App frontend after completing necessary installation
+   or you can access it on web at `https://bitebook.netlify.app/`.
 
-2. Register as a new user or log in using your existing credentials.
+3. Register as a new user or log in using your existing credentials.
 
-3. Explore the menu to view the available dishes and their details.
+4. Explore the menu to view the available dishes and their details.
 
-4. Place an order for your favorite dish.
+5. Place an order for your favorite dish.
 
-5. If you are an admin user, log in to the admin dashboard to manage the menu and view orders.
+6. If you are an admin user, log in to the admin dashboard to manage the menu and view orders.
 
 ## Project Structure
 
@@ -169,6 +175,3 @@ If you have any questions or suggestions, please feel free to contact us at upsa
 
 ![Screenshot 2](link-to-your-screenshot-2)
 
-## Deployment
-
-The Book Bite App is deployed and accessible at [https://bitebook.netlify.app/](https://bitebook.netlify.app/).
